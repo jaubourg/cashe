@@ -1,6 +1,6 @@
 # cashe
 
-[![Build Status via Travis CI](https://travis-ci.org/jaubourg/cashe.png?branch=master)](https://travis-ci.org/jaubourg/cashe)
+[![Build Status via Travis CI](https://travis-ci.org/jaubourg/cashe.png?branch=master)](https://travis-ci.org/jaubourg/cashe)  [![Gittip](https://img.shields.io/gittip/jaubourg.svg)](https://www.gittip.com/jaubourg/)
 
 `cashe` is a simple "get from cache or create if not in yet" little utility for NodeJS.
 
