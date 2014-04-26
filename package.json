@@ -1,0 +1,17 @@
+{
+	"name": "cashe",
+	"version": "0.0.0",
+	"author": "Julian Aubourg <j@ubourg.net> (http://jaubourg.net)",
+	"description": "Simple cache utility",
+	"main": "./lib/cashe.js",
+	"repository" : {
+		"type" : "git",
+		"url" : "http://github.com/jaubourg/cashe.git"
+	},
+	"devDependencies": {
+		"nodeunit": "0.8.x"
+	},
+	"scripts": {
+		"test": "node test"
+	}
+}
