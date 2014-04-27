@@ -55,6 +55,12 @@ A store must implement the following interface:
 - `get( <key> )`: returns the value associated to the key. What happens if no value is associated to the key is unspecified: `cashe` will never call `get` if `has` returned `false`
 - `set( <key>, <value> )`: associates the value to the key and returns the value. What happens if a value is already associated to the key is unspecified: `cashe` will never call `set` if `has` returned `true`
 
+It is recommended that a store also implements the following optional method:
+
+- `del( <key> )`: removes value associated with key. What happens if no value is associated to the key is unspecified: `del` should only be called if `has` returned true. If the store doesn't support deleting entries yet implements `del` then `del` must throw an exception
+
+`cashe` does _not_ use `del` internally but it can prove useful in order to implement advanced logic on your end.
+
 As an example, here is the code of the default store:
 
 ```javascript
@@ -71,6 +77,9 @@ ObjectStore.prototype = {
 	},
 	set: function( key, data ) {
 		return ( this.object[ key ] =  data );
+	},
+	del: function( key ) {
+		delete this.object[ key ];
 	}
 }
 ```
