@@ -10,7 +10,8 @@ module.exports = {
 				return key + "Value";
 			}
 		} );
-		__.expect( 3 );
+		__.expect( 4 );
+		__.ok( cache.store instanceof cashe.ObjectStore, "store is exposed and is an ObjectStore" );
 		__.strictEqual( cache( "key" ), "keyValue", "value properly retrieved the first time" );
 		__.strictEqual( cache( "key" ), "keyValue", "value properly retrieved later on" );
 		__.done();
@@ -20,7 +21,8 @@ module.exports = {
 			__.ok( true, "create function called" );
 			return key + "Value";
 		} );
-		__.expect( 3 );
+		__.expect( 4 );
+		__.ok( cache.store instanceof cashe.ObjectStore, "store is exposed and is an ObjectStore" );
 		__.strictEqual( cache( "key" ), "keyValue", "value properly retrieved the first time" );
 		__.strictEqual( cache( "key" ), "keyValue", "value properly retrieved later on" );
 		__.done();
@@ -45,35 +47,37 @@ module.exports = {
 		__.done();
 	},
 	"custom store": function( __ ) {
-		var store = new cashe.ObjectStore();
+		var baseStore = new cashe.ObjectStore();
 		var step = 0;
+		var store = {
+			has: function( key ) {
+				step++;
+				var result = baseStore.has( key );
+				__.strictEqual( key, "key", "expected key in 'has'" );
+				__.strictEqual( step, result ? 3 : 1, "'has' called for proper step #" + step );
+				return result;
+			},
+			set: function( key, data ) {
+				step++;
+				__.strictEqual( key, "key", "expected key in 'set'" );
+				__.strictEqual( step, 2, "'set' called for proper step #" + step );
+				return baseStore.set( key, data );
+			},
+			get: function( key ) {
+				step++;
+				__.strictEqual( key, "key", "expected key in 'get'" );
+				__.strictEqual( step, 4, "'get' called for proper step #" + step );
+				return baseStore.get( key );
+			}
+		};
 		var cache = cashe( {
 			create: function( key ) {
 				return key + "Value";
 			},
-			store: {
-				has: function( key ) {
-					step++;
-					var result = store.has( key );
-					__.strictEqual( key, "key", "expected key in 'has'" );
-					__.strictEqual( step, result ? 3 : 1, "'has' called for proper step #" + step );
-					return result;
-				},
-				set: function( key, data ) {
-					step++;
-					__.strictEqual( key, "key", "expected key in 'set'" );
-					__.strictEqual( step, 2, "'set' called for proper step #" + step );
-					return store.set( key, data );
-				},
-				get: function( key ) {
-					step++;
-					__.strictEqual( key, "key", "expected key in 'get'" );
-					__.strictEqual( step, 4, "'get' called for proper step #" + step );
-					return store.get( key );
-				}
-			}
+			store: store
 		} );
-		__.expect( 10 );
+		__.expect( 11 );
+		__.strictEqual( cache.store, store, "store is exposed" );
 		__.strictEqual( cache( "key" ), "keyValue", "value properly retrieved the first time" );
 		__.strictEqual( cache( "key" ), "keyValue", "value properly retrieved later on" );
 		__.done();
