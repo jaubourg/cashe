@@ -4,7 +4,7 @@ var path = require( "path" );
 
 module.exports = function( grunt ) {
 
-	var lintTargets = [ "*.js", "lib/**/*.js", "test/**/*.js" ];
+	var lintTargets = [ "*.js", ".*.js", "lib/**/*.js", "test/**/*.js" ];
 
 	var nodeunit = path.resolve( __dirname, "node_modules/.bin/nodeunit" + ( path.sep === "/" ? "" : ".cmd" ) );
 

@@ -1,0 +1,5 @@
+{
+	"coveralls": true,
+	"grunt-jscoverage": true,
+	"wrench": true
+}
