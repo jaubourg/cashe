@@ -86,10 +86,21 @@ ObjectStore.prototype = {
 	del: function( key ) {
 		delete this.object[ key ];
 	}
-}
+};
 ```
 
 You can access the default `ObjectStore` through `cashe.ObjectStore` and use it as a base for your own stores if you so desire.
+
+The store of a cache is exposed as its `store`field:
+
+```javascript
+var cache = cashe( {
+	create: createFunction,
+	store: myStore
+} );
+
+cache.store === myStore; // true
+```
 
 ### Complex input data for creation
 
@@ -125,6 +136,14 @@ cache( CoreyData ); // returns "Hello, Corey Frang"
 ```
 
 In fact, the function can return any type of data as long as it is compatible with what the associated store expects as keys.
+
+As a convenience, the `create` function is given whatever the `key` function returned as a second argument:
+
+```javascript
+function createGreeting( person, key ) {
+	person.id === key; // true
+}
+```
 
 ## OMG! THIS IS NOT ASYNCHRONOUS-AWARE! WHAT THE WHAT?!?
 
