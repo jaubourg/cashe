@@ -1,6 +1,11 @@
-# cashe
+[![Build Status](https://travis-ci.org/jaubourg/cashe.svg?branch=master)](https://travis-ci.org/jaubourg/cashe)
+[![Coverage Status](https://img.shields.io/coveralls/jaubourg/cashe.svg)](https://coveralls.io/r/jaubourg/cashe)
+[![Dependency Status](https://david-dm.org/jaubourg/cashe.svg)](https://david-dm.org/jaubourg/cashe)
+[![devDependency Status](https://david-dm.org/jaubourg/cashe/dev-status.svg)](https://david-dm.org/jaubourg/cashe#info=devDependencies)
+[![Gittip](https://img.shields.io/gittip/jaubourg.svg)](https://www.gittip.com/jaubourg/)
 
-[![Build Status via Travis CI](https://travis-ci.org/jaubourg/cashe.png?branch=master)](https://travis-ci.org/jaubourg/cashe)  [![Gittip](https://img.shields.io/gittip/jaubourg.svg)](https://www.gittip.com/jaubourg/)
+[![NPM](https://nodei.co/npm/cashe.png?downloads=true&stars=true)](https://www.npmjs.org/package/cashe)
+# cashe
 
 `cashe` is a simple "get from cache or create if not in yet" little utility for NodeJS.
 
@@ -126,3 +131,8 @@ In fact, the function can return any type of data as long as it is compatible wi
 Everything in `cashe` is synchronous: the `create` function must return synchronously and so do all the methods of a custom `store`.
 
 If you wanna handle asynchronous stuff behind `cashe` __then__ (hint hint) use promises (I use [JQDeferred](https://github.com/jaubourg/jquery-deferred-for-node) extensively myself with great success).
+
+## License
+
+Copyright (c) 2012 - 2014 [Julian Aubourg](mailto:j@ubourg.net)
+Licensed under the [MIT license](https://raw.githubusercontent.com/jaubourg/cashe/master/LICENSE-MIT).

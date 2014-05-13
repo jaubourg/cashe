@@ -1,6 +1,6 @@
 "use strict";
 
-var ObjectStore = require( "../.." ).ObjectStore;
+var ObjectStore = require( "../" ).ObjectStore;
 
 module.exports = {
 	"basics": function( __ ) {

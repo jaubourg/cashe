@@ -9,9 +9,17 @@
 		"url" : "http://github.com/jaubourg/cashe.git"
 	},
 	"devDependencies": {
-		"nodeunit": "0.8.x"
+		"coveralls": "2.10.0",
+		"grunt": "0.4.4",
+		"grunt-contrib-jshint": "0.10.0",
+		"grunt-jscoverage": "0.1.0",
+		"grunt-jscs-checker": " 0.4.3",
+		"grunt-shell": "0.7.0",
+		"load-grunt-tasks": "0.4.0",
+		"nodeunit": "0.8.7",
+		"wrench": "1.5.8"
 	},
 	"scripts": {
-		"test": "node test"
+		"test": "grunt"
 	}
 }

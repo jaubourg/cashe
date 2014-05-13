@@ -1,6 +1,6 @@
 "use strict";
 
-var cashe = require( "../.." );
+var cashe = require( "../" );
 
 module.exports = {
 	"basics": function( __ ) {
