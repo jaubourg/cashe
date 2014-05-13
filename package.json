@@ -1,6 +1,6 @@
 {
 	"name": "cashe",
-	"version": "0.2.0",
+	"version": "0.3.0",
 	"author": "Julian Aubourg <j@ubourg.net> (http://jaubourg.net)",
 	"description": "Simple cache utility",
 	"main": "./lib/cashe.js",

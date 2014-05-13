@@ -29,8 +29,8 @@ module.exports = {
 	},
 	"key encoder": function( __ ) {
 		var cache = cashe( {
-			create: function( data ) {
-				return data.key + "Value";
+			create: function( data, key ) {
+				return data.key + key + "Value";
 			},
 			key: function( data ) {
 				__.ok( true, "key encoder called" );
@@ -40,10 +40,10 @@ module.exports = {
 		__.expect( 4 );
 		__.strictEqual( cache( {
 			key: "key"
-		} ), "keyValue", "value properly retrieved the first time" );
+		} ), "keykeyValue", "value properly retrieved the first time" );
 		__.strictEqual( cache( {
 			key: "key"
-		} ), "keyValue", "value properly retrieved later on" );
+		} ), "keykeyValue", "value properly retrieved later on" );
 		__.done();
 	},
 	"custom store": function( __ ) {
